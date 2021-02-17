@@ -8,7 +8,7 @@ You can fork this project and host it somewhere else.
 
 ## Or, more easily:
 
-Just point your Oath consumer URL callback directly to:
+Just point your OAuth consumer URL callback directly to:
 
 `https://rpagliuca.github.io/copy-bitbucket-access-token-to-clipboard`
 

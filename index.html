@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<head>
+    <style>
+        body {
+            font-size: 110%;
+            font-family: sans-serif;
+            margin: 20px 20px;
+        }
+        input, button {
+            font-size: 100%;
+        }
+        span {
+            display: block;
+        }
+        input, button, span {
+            margin: 20px 0px 0px 20px;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+    <script>
+        copy_to_clipboard = () => {
+            const input = document.getElementById("access_token")
+            input.focus();
+            input.select();
+            const successful = document.execCommand('copy');
+            const output = document.getElementById("message")
+            let msg = "Please manually copy the access code to the clipboard and paste into terminal window.";
+            output.classList = ["error"];
+            if (successful) {
+                msg = "Copied access code to clipboard! Now paste it into the terminal window.";
+                output.classList = ["success"];
+            }
+            output.innerText = msg;
+        }
+    </script>
+</head>
+
+    <div><span>Bitbucket access token:</span></div>
+
+    <div><input type="text" id="access_token"></input></div>
+
+    <div><button onclick="copy_to_clipboard()"/>Copy to clipboard</button></div>
+
+    <div><span id="message"></span></div>
+
+    <script>
+        const queryString = window.location.hash.substr(1);
+        const parsedHash = new URLSearchParams(queryString);
+        const access_token = parsedHash.get('access_token');
+        const input = document.getElementById("access_token")
+        input.value = access_token;
+    </script>
+
+</html>
